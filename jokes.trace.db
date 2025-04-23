@@ -1,0 +1,4 @@
+2025-04-17 14:34:12.151624+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Значение слишком длинное для поля "TEXT_JOKE CHARACTER VARYING(255)": "U&'\\041e\\0434\\0438\\043d \\0431\\0438\\0437\\043d\\0435\\0441\\043c\\0435\\043d \\0445\\043e... (314)"
+Value too long for column "TEXT_JOKE CHARACTER VARYING(255)": "U&'\\041e\\0434\\0438\\043d \\0431\\0438\\0437\\043d\\0435\\0441\\043c\\0435\\043d \\0445\\043e... (314)"; SQL statement:
+insert into jokes (created_at,modified_at,text_joke,id) values (?,?,?,default) [22001-232]
