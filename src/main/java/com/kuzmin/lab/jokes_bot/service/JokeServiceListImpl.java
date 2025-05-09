@@ -1,5 +1,6 @@
 package com.kuzmin.lab.jokes_bot.service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import com.kuzmin.lab.jokes_bot.model.Joke;
@@ -21,8 +22,12 @@ public class JokeServiceListImpl implements JokesService {
     }
 
     @Override
-    public List<Joke> getAllJokes() {
+    public List<Joke> getAllJokes(LocalDate createdAt, int page, int size) {
         return jokes;
+//        int from = page * size;
+//        int to = Math.min(from + size, jokes.size());
+//        if (from >= jokes.size()) return new ArrayList<>();
+//        return jokes.subList(from, to);
     }
 
     @Override

@@ -49,8 +49,12 @@ public class TelegramUpdateListener implements UpdatesListener {
 
                     // Команда /getalljokes
                     else if (text.equalsIgnoreCase("/getalljokes")) {
-                        String jokes = jokesService.getAllJokes().toString();
-                        telegramBot.execute(new SendMessage(chatId, jokes.isEmpty() ? "Нет шуток" : jokes));
+//                        LocalDate createdAt = LocalDate.now(); // или нужная дата
+//                        int page = 0;
+//                        int size = 100;
+//                        String jokes = jokesService.getAllJokes(createdAt, page, size).toString();
+//                        String jokes = jokesService.getAllJokes().toString();
+//                        telegramBot.execute(new SendMessage(chatId, jokes.isEmpty() ? "Нет шуток" : jokes));
                     }
 
                     // Команда /getjoke <id>

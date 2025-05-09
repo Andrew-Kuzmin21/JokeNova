@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RequestMapping("/api/jokes")
@@ -35,12 +36,17 @@ public class JokesController {
     @PostMapping
     public ResponseEntity<Joke> addJokes(@RequestBody Joke joke) {
         //jokesServiceLocal .addJokes(joke);
+        joke.setCreatedAt(LocalDate.now());
         return ResponseEntity.status(HttpStatus.CREATED).body(jokesService.addJokes(joke));
     }
 
     @GetMapping
-    public ResponseEntity<List<Joke>> getAllJokes() {
-        return ResponseEntity.ok(jokesService.getAllJokes());
+    public ResponseEntity<List<Joke>> getAllJokes(
+            @RequestParam(value = "createdAt", required = false) LocalDate createdAt,
+            @RequestParam(value = "page") int page,
+            @RequestParam(value = "size", required = false, defaultValue = "50") Integer size
+    ) {
+        return ResponseEntity.ok(jokesService.getAllJokes(createdAt, page, size));
     }
 
     @GetMapping("/{id}")

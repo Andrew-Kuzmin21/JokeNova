@@ -1,0 +1,5 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/2025/05/05-01-changelog.sql
+  - include:
+      file: db/changelog/2025/05/06-01-changelog.sql
