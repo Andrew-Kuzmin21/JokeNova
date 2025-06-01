@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -33,6 +34,7 @@ public class JokesController {
         this.jokesService = jokesService;
     }
 
+    @Secured("hasAuthority('Admin')")
     @PostMapping
     public ResponseEntity<Joke> addJokes(@RequestBody Joke joke) {
         //jokesServiceLocal .addJokes(joke);
@@ -40,6 +42,7 @@ public class JokesController {
         return ResponseEntity.status(HttpStatus.CREATED).body(jokesService.addJokes(joke));
     }
 
+    @Secured("hasAuthority('Customer', 'Admin')")
     @GetMapping
     public ResponseEntity<List<Joke>> getAllJokes(
             @RequestParam(value = "createdAt", required = false) LocalDate createdAt,
@@ -54,6 +57,7 @@ public class JokesController {
         return ResponseEntity.ok(jokesService.getJokeById(id));
     }
 
+    @Secured("hasAuthority('Admin')")
     @PutMapping("/{id}")
     public ResponseEntity<Joke> editJoke(
             @PathVariable("id") Long id,
@@ -61,6 +65,7 @@ public class JokesController {
         return ResponseEntity.ok(jokesService.editJoke(id, joke));
     }
 
+    @Secured("hasAuthority('Admin')")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteJoke(@PathVariable("id") Long id) {
         jokesService.deleteJoke(id);

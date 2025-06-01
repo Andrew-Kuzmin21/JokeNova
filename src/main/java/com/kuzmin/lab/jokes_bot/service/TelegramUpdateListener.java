@@ -53,6 +53,7 @@ public class TelegramUpdateListener implements UpdatesListener {
 //                        int page = 0;
 //                        int size = 100;
 //                        String jokes = jokesService.getAllJokes(createdAt, page, size).toString();
+
 //                        String jokes = jokesService.getAllJokes().toString();
 //                        telegramBot.execute(new SendMessage(chatId, jokes.isEmpty() ? "Нет шуток" : jokes));
                     }
